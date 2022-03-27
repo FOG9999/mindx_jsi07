@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  let [username, setUsername] = useState('thangnd');
+
   return (
     <div className="App">
       <header className="App-header">
@@ -15,7 +19,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React with {username}
         </a>
       </header>
     </div>
