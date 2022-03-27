@@ -4,9 +4,10 @@ import './index.css';
 import App from './App';
 import DemoStateFull from './components/DermoStateFull';
 import reportWebVitals from './reportWebVitals';
+import Login from './components/Hung/Login';
 
 ReactDOM.render(
-  <App />,
+  <Login />,
   document.getElementById('root')
 );
 
