@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import Login from './components/Hung/Login';
 
 ReactDOM.render(
-  <Login />,
+  <App />,
   document.getElementById('root')
 );
 
