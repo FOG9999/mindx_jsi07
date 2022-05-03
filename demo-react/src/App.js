@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import ListPost from './components/list-posts/ListPost';
+import GameWrapper from './components/tic-tac-toe/GameWrapper';
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <ListPost />
+      <GameWrapper />
     </div>
   );
 }
