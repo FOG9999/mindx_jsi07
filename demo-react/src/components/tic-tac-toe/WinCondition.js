@@ -4,9 +4,9 @@
  */
 const buildWinCondition = (length) => {
     const condition = {
-        horizontal: [],
-        vertical: [],
-        diagonal: [[], []], // [[left->right], [right->left]]
+        horizontal: [], // hàng ngang
+        vertical: [],  // cột dọc
+        diagonal: [[], []], // [[left->right], [right->left]] -> đường chéo
     };
     for (let i = 0; i < length; i++) {
         condition.diagonal[0].push(i * (length + 1));

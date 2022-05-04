@@ -17,6 +17,7 @@ class GameWrapper extends Component {
             vertical: [],
             diagonal: [[], []], // [[left->right], [right->left]]
         },
+        codeWin: 0,
         gameOver: false,
         currentCodeTurn: 1, // lưu lại code của user trong turn hiện tại
     };
@@ -28,17 +29,16 @@ class GameWrapper extends Component {
             gameIsStarted: true,
             codeUserOnFirstTurn: randomNumber % 2,
             currentCodeTurn: randomNumber % 2,
-            winCondition
+            winCondition,
         });
     };
 
     onClickCell = (index) => {
-        if (this.state.gameIsStarted && this.state.board[index] === 0) {
+        if (this.state.gameIsStarted && this.state.board[index] === 0 && !this.state.gameOver) {
             // update giá trị tại ô được click
             this.updateBoardArr(index);
-
             setTimeout(() => {
-                this.doMachineTurn();
+                if (!this.state.gameOver) this.doMachineTurn();
             }, 1000);
         }
     };
@@ -57,9 +57,14 @@ class GameWrapper extends Component {
         this.updateBoardArr(unfilledCellIndexes[rdIndexInunfilled]);
     };
 
-    checkIfGameIsOver = (board) => {
+    checkIfGameIsOver = () => {
         // ? one user win
-
+        let checkResult = this.checkWinCondition();
+        if (checkResult.codeWin > 0) {
+            this.setState(checkResult);
+            console.log(this.state.codeWin === 2 ? "Bạn đã thắng" : "Bạn đã thua");
+            return true;
+        }
         // all cells are fiiled
         let allCellsAreFilled = true;
         this.state.board.forEach((ele) => {
@@ -76,15 +81,49 @@ class GameWrapper extends Component {
         }
     };
 
+    checkWinCondition = () => {
+        let userTicks = [];
+        let machineTicks = [];
+        this.state.board.forEach((cell, ind) => {
+            if (cell === 1) userTicks.push(ind);
+            if (cell == 2) machineTicks.push(ind);
+        });
+        let isWin = false;
+        let directions = ["horizontal", "vertical", "diagonal"];
+        for (let direction of directions) {
+            for (let i = 0; i < this.state.winCondition[direction].length; i++) {
+                if (this.state.currentCodeTurn === 2) {
+                    isWin = this.state.winCondition[direction][i].every((ele) => userTicks.indexOf(ele) >= 0);
+                } else isWin = this.state.winCondition[direction][i].every((ele) => machineTicks.indexOf(ele) >= 0);
+                if (isWin) {
+                    return {
+                        codeWin: this.state.currentCodeTurn === 1 ? 2 : 1,
+                        gameOver: true,
+                    };
+                }
+            }
+        }
+        return {
+            codeWin: 0,
+            gameOver: false,
+        };
+    };
+
     updateBoardArr = (index) => {
         let arr = this.state.board;
         arr[index] = this.state.currentCodeTurn;
 
         let newCode = this.state.currentCodeTurn === 1 ? 2 : 1; // switch giá trị nếu = 2 thì cho =1, nếu bằng 1 thì cho = 2
-        this.setState({
-            board: [...arr], // clone array arr ra một giá trị mới, một con trỏ mới -> React có thể hiểu là cập nhật state
-            currentCodeTurn: newCode,
-        });
+
+        this.setState(
+            {
+                board: [...arr], // clone array arr ra một giá trị mới, một con trỏ mới -> React có thể hiểu là cập nhật state
+                currentCodeTurn: newCode,
+            },
+            () => {
+                this.checkIfGameIsOver();
+            }
+        );
     };
 
     render() {
