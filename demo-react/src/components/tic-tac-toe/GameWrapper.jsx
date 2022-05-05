@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import BoardGame from "./BoardGame";
 import User from "./User";
 import { buildWinCondition } from "./WinCondition";
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class GameWrapper extends Component {
     state = {
@@ -33,14 +35,22 @@ class GameWrapper extends Component {
         });
     };
 
+    checkIfUserTurn = () => {
+        if(this.state.gameIsStarted && !this.state.gameOver && this.state.currentCodeTurn === 1){
+            return true;
+        }
+        else return false;
+    }
+
     onClickCell = (index) => {
-        if (this.state.gameIsStarted && this.state.board[index] === 0 && !this.state.gameOver) {
+        if (this.checkIfUserTurn() && this.state.board[index] === 0) {
             // update giá trị tại ô được click
             this.updateBoardArr(index);
             setTimeout(() => {
                 if (!this.state.gameOver) this.doMachineTurn();
             }, 1000);
         }
+        else toast.warn('Not your turn');
     };
 
     doMachineTurn = () => {
@@ -62,7 +72,12 @@ class GameWrapper extends Component {
         let checkResult = this.checkWinCondition();
         if (checkResult.codeWin > 0) {
             this.setState(checkResult);
-            console.log(this.state.codeWin === 2 ? "Bạn đã thắng" : "Bạn đã thua");
+            if(checkResult.codeWin === 1){
+                toast.success('You won!')
+            }
+            else {
+                toast.dark('You lose')
+            }
             return true;
         }
         // all cells are fiiled
@@ -129,6 +144,7 @@ class GameWrapper extends Component {
     render() {
         return (
             <div>
+                <ToastContainer />
                 <div className="text-center header py-2">
                     <button className="btn btn-primary" disabled={this.state.gameIsStarted} onClick={this.onClickStartGame}>
                         Start
@@ -136,11 +152,11 @@ class GameWrapper extends Component {
                 </div>
                 <div className="game-main mt-3">
                     <div className="row">
-                        <User user={this.state.user} />
+                        {/* <User user={this.state.user} /> */}
                         <BoardGame board={this.state.board} onClickCell={this.onClickCell} />
                     </div>
                 </div>
-                <div className="result">Bạn đã chiến thắng</div>
+                {/* <div className="result">Bạn đã chiến thắng</div> */}
             </div>
         );
     }
