@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import BoardGame from "./BoardGame";
 import User from "./User";
 import { buildWinCondition } from "./WinCondition";
-import {toast, ToastContainer} from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 class GameWrapper extends Component {
@@ -36,7 +36,7 @@ class GameWrapper extends Component {
     };
 
     checkIfUserTurn = () => {
-        if(this.state.gameIsStarted && !this.state.gameOver && this.state.currentCodeTurn === 1){
+        if (this.state.gameIsStarted && !this.state.gameOver && this.state.currentCodeTurn === 1) {
             return true;
         }
         else return false;
@@ -72,7 +72,7 @@ class GameWrapper extends Component {
         let checkResult = this.checkWinCondition();
         if (checkResult.codeWin > 0) {
             this.setState(checkResult);
-            if(checkResult.codeWin === 1){
+            if (checkResult.codeWin === 1) {
                 toast.success('You won!')
             }
             else {
@@ -152,7 +152,7 @@ class GameWrapper extends Component {
                 </div>
                 <div className="game-main mt-3">
                     <div className="row">
-                        {/* <User user={this.state.user} /> */}
+                        <User user={this.state.user} />
                         <BoardGame board={this.state.board} onClickCell={this.onClickCell} />
                     </div>
                 </div>
