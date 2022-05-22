@@ -1,34 +1,69 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
-  state = {};
+  state = {
+    width: window.innerWidth,
+  };
+
+  componentDidMount() {
+    window.onresize = () => {
+      this.setState({
+        width: window.innerWidth,
+      });
+    };
+  }
+
   render() {
     return (
       <header className="h-20 box-border bg-gray-200 flex flex-row items-center justify-items-center text-center text-red-900">
-        <div class="px-20 py-2">
-          <a href="index.html">
+        <div className="px-20 py-2">
+          <Link to={"/homepage"}>
             <img
               className="w-100 h-16"
               src="https://www.gearinc.com/wp-content/uploads/2020/01/gear_logo.png"
               alt=""
             />
-          </a>
+          </Link>
         </div>
         <div className="">
-          <ul className="py-5 flex flex-row text-xl">
-            <a href="/HTML/laptop.html">
-              <li className="px-8">Laptop</li>
-            </a>
-            <a href="">
-              <li className="px-8">Mouse</li>
-            </a>
-            <a href="">
-              <li className="px-8">Keyboard</li>
-            </a>
-            <a href="">
-              <li className="px-8">Headphone</li>
-            </a>
-          </ul>
+          {this.state.width < 800 ? (
+            <ul className="py-5 flex flex-row text-xl">
+              <Link to={"/homepage"}>
+                <li className="px-8">Laptop</li>
+              </Link>
+              <Link to={"/homepage"}>
+                <li className="px-8">Mouse</li>
+              </Link>
+              <Link to={"/homepage"}>
+                <li className="px-8">Keyboard</li>
+              </Link>
+              <Link to={"/homepage"}>
+                <li className="px-8">Headphone</li>
+              </Link>
+            </ul>
+          ) : (
+            <div className="dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Dropdown button
+              </button>
+              <div
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <a className="dropdown-item" href="#">
+                  Laptop
+                </a>
+              </div>
+            </div>
+          )}
         </div>
         <div className="py-5 box-border flex flex-wrap">
           <input
