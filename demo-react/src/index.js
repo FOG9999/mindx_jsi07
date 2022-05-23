@@ -1,10 +1,4 @@
 import React from 'react';
-import 'bootstrap';
-import 'bootstrap/dist/js/bootstrap.bundle'
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.js';
-import $ from 'jquery';
-import Popper from 'popper.js';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
