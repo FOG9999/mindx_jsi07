@@ -1,0 +1,137 @@
+:root {
+    --spacing-1:2px;
+    --spacing-2: 4px;
+    --spacing-3: 6px;
+    --spacing-4: 8px;
+    --spacing-5: 10px;
+    --spacing-6: 12px;
+    --spacing-7: 14px;
+    --spacing-8: 16px;
+    --spacing-9: 18px;
+    --spacing-10: 20px;
+}
+.mx_1 {
+   margin: 0 var(--spacing-1);
+}
+.mx_2 {
+   margin: 0 var(--spacing-2);
+}
+.mx_3 {
+   margin: 0 var(--spacing-3);
+}
+.mx_4 {
+   margin: 0 var(--spacing-4);
+}
+.mx_5 {
+   margin: 0 var(--spacing-5);
+}
+.mx_6 {
+   margin: 0 var(--spacing-6);
+}
+.mx_7 {
+   margin: 0 var(--spacing-7);
+}
+.mx_8 {
+   margin: 0 var(--spacing-8);
+}
+.mx_9 {
+   margin: 0 var(--spacing-9);
+}
+.mx_10 {
+   margin: 0 var(--spacing-10);
+}
+
+.my_1 {
+   margin: var(--spacing-1) 0;
+}
+.my_2 {
+   margin: var(--spacing-2) 0;
+}
+.my_3 {
+   margin: var(--spacing-3) 0;
+}
+.my_4 {
+   margin: var(--spacing-4) 0;
+}
+.my_5 {
+   margin: var(--spacing-5) 0;
+}
+.my_6 {
+   margin: var(--spacing-6) 0;
+}
+.my_7 {
+   margin: var(--spacing-7) 0;
+}
+.my_8 {
+   margin: var(--spacing-8) 0;
+}
+.my_9 {
+   margin: var(--spacing-9) 0;
+}
+.my_10 {
+   margin: var(--spacing-10) 0;
+}
+
+
+.px_1 {
+   padding: 0 var(--spacing-1);
+}
+.px_2 {
+   padding: 0 var(--spacing-2);
+}
+.px_3 {
+   padding: 0 var(--spacing-3);
+}
+.px_4 {
+   padding: 0 var(--spacing-4);
+}
+.px_5 {
+   padding: 0 var(--spacing-5);
+}
+.px_6 {
+   padding: 0 var(--spacing-6);
+}
+.px_7 {
+   padding: 0 var(--spacing-7);
+}
+.px_8 {
+   padding: 0 var(--spacing-8) ;
+}
+.px_9 {
+   padding: 0 var(--spacing-9) ;
+}
+.px_10 {
+   padding: 0 var(--spacing-10) ;
+}
+
+.py_1 {
+    padding: var(--spacing-1) 0;
+ }
+ .py_2 {
+    padding: var(--spacing-2) 0;
+ }
+ .py_3 {
+    padding: var(--spacing-3) 0;
+ }
+ .py_4 {
+    padding: var(--spacing-4) 0;
+ }
+ .py_5 {
+    padding: var(--spacing-5) 0;
+ }
+ .py_6 {
+    padding: var(--spacing-6) 0;
+ }
+ .py_7 {
+    padding: var(--spacing-7) 0;
+ }
+ .py_8 {
+    padding: var(--spacing-8) 0;
+ }
+ .py_9 {
+    padding: var(--spacing-9) 0;
+ }
+ .py_10 {
+    padding: var(--spacing-10) 0;
+ }
+ 
