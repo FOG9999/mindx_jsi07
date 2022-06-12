@@ -40,6 +40,9 @@ class Cart extends Component {
             </div>
           </div>
         </div>
+        <div className="font-bold text-2xl flex justify-end mr-20">
+          <h1>Total: ... VND</h1>
+        </div>
         <Footer />
       </div>
     );

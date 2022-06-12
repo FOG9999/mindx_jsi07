@@ -4,11 +4,12 @@ import { useState } from 'react';
 import ListPost from './components/list-posts/ListPost';
 import GameWrapper from './components/tic-tac-toe/GameWrapper';
 import LifeCycle from './components/life-cycle/LifeCycle';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Homepage from './NhanNguyen/Component/Container/Homepage';
 import Cart from './NhanNguyen/Component/Container/Cart';
 import Login from './NhanNguyen/Component/Container/Login';
-import Signin from './NhanNguyen/Component/Container/Signin';
+import Signup from './NhanNguyen/Component/Container/Signup';
+import Item from './NhanNguyen/Component/Container/Item';
 
 function App() {
 
@@ -16,14 +17,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/life-cycle' element={<LifeCycle />} />
-        <Route path="/tic-tac-toe" element={<GameWrapper />} />
-        <Route path='/homepage' element={<Homepage />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/signin' element={<Signin />} />
-      </Routes>
+      <Switch>
+        <Route path='/life-cycle' component={LifeCycle} />
+        <Route path="/tic-tac-toe" component={GameWrapper} />
+        <Route path='/homepage' component={Homepage} />
+        <Route path='/cart' component={Cart} />
+        <Route path='/login' component={Login} />
+        <Route path='/signin' component={Signup} />
+        <Route path='/item/:id' component={Item} />
+      </Switch>
     </BrowserRouter>
   );
 }

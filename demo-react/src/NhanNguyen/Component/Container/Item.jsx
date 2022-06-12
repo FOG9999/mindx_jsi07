@@ -2,8 +2,42 @@ import React, { Component } from "react";
 import Footer from "../Share/Footer";
 import Header from "../Share/Header";
 
+const ItemsAPI =
+  "https://621224f301ccdac074332fd3.mockapi.io/api/v1/items/Items";
+
 class Item extends Component {
-  state = {};
+  state = {
+    product: {},
+  };
+
+  componentDidMount() {
+    this.getItemFromAPIUrl(ItemsAPI);
+  }
+
+  getItemFromAPIUrl = (APIUrl) => {
+    let productId = this.props.match.params.id;
+    fetch(`${APIUrl}/${productId}`)
+      .then(function (res) {
+        if (res.ok === true) {
+          return res.json();
+        } else {
+          throw new Error(
+            "Hệ thống đang xảy ra vấn đề, vui lòng truy cập lại sau"
+          );
+        }
+      })
+      .then(function (data) {
+        console.log(data);
+        const { Image, Name, Price } = data;
+        data.Image = Image;
+        data.Name = Name;
+        data.Price = `${Price}`;
+      })
+      .catch(function (error) {
+        alert("error");
+      });
+  };
+
   render() {
     return (
       <div>
@@ -49,7 +83,7 @@ class Item extends Component {
             </div>
             <div className="px-6 md:py-3 lg:w-1/2">
               <h1
-                className="font-bold text-3xl md:text-6xl mb-3 text-primary leading-tight"
+                className="font-bold text-3xl md:text-6xl mb-3 leading-tight text-black"
                 id="name"
               >
                 Laptop Gaming Asus ROG Strix G15 G513IC HN002

@@ -44,7 +44,7 @@ class Homepage extends Component {
             className="border"
             style={{ minHeight: "250px", maxHeight: "500px", height: "90%" }}
           >
-            <Link to="/homepage">
+            <Link to={`/item/${item.id}`}>
               <img
                 className="m-auto"
                 style={{ width: "60%", height: "75%" }}
@@ -58,10 +58,10 @@ class Homepage extends Component {
                 <p>Price: {item.Price} VND</p>
               </div>
               <div>
-                <button>
+                <button className="border-none">
                   <img
-                    className="w-14 h-14"
-                    src="https://static.thenounproject.com/png/3557455-200.png"
+                    className="w-10 h-10 mr-2 border-none"
+                    src="https://cdn-icons-png.flaticon.com/512/1250/1250544.png?"
                     alt=""
                   />
                 </button>
