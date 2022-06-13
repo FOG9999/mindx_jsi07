@@ -18694,3 +18694,4 @@ var shopee_data = [
         "biz_json": null
     }
 ]
+var IMAGE_URL = 'https://cf.shopee.vn/file/'
