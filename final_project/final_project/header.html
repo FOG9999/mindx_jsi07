@@ -19,6 +19,13 @@
 <script src="./api/shopee_data.js"></script>
 
 </head>
+<style>
+            #list-products {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</style>
 
 <body>
     <div class="container">
@@ -27,6 +34,14 @@
               <a href="./header&footer.html"><svg xmlns="http://www.w3.org/2000/svg" class="icon_1" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>Home</a>
+        </div>
+        <div class="search-bar input-group">
+            <span class="search-input">
+                <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
+            </span>
+            <span class="ml-2">
+                <button class="btn btn-primary">Search</button>
+            </span>
         </div>
         <div class="header_info my_6">
             <div class="header_info_1 mx_5">
@@ -173,6 +188,7 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="button.js"></script>
     <script src="./js/homepage.js"></script>
+    <script src="./js/utils.js"></script>
 </div>
 </body>
 

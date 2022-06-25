@@ -81,7 +81,7 @@ li {
 
 
 .header {
-    height: 3%;
+    /* height: 3%; */
     width: 100%;
     display: flex;
     justify-content: space-between;
